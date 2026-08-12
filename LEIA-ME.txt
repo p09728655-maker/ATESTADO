@@ -1,0 +1,25 @@
+APP ATESTADOS — PACOTE DE PUBLICAÇÃO (PWA)
+Patrimar Móveis · Departamento Pessoal
+
+ARQUIVOS
+  index.html     aplicativo completo (mesmo dashboard, já otimizado)
+  manifest.json  identidade do app (nome, ícone, cor)
+  sw.js          funcionamento offline
+  icon-192.jpg   ícone do app
+  logo.jpg       logo usado na tela e no relatório
+
+COMO PUBLICAR (conta p09728655-maker, mesmo padrão dos outros painéis)
+  1. Crie um repositório novo no GitHub, ex.: ATESTADOS-DP
+  2. Envie estes 5 arquivos na raiz do repositório (Add file > Upload files)
+  3. No Vercel: Add New > Project > importe o repositório > Deploy
+  4. Framework Preset: Other. Não precisa de build command.
+
+COMO INSTALAR COMO APLICATIVO
+  Abra a URL no Chrome ou Edge. Aparece um ícone de instalar na barra de
+  endereço (ou menu ... > Instalar). O app ganha ícone próprio, abre em
+  janela sem barra de navegador e funciona offline depois da primeira vez.
+  No celular: menu do navegador > Adicionar à tela inicial.
+
+IMPORTANTE
+  A planilha continua sendo lida no próprio aparelho de quem abre.
+  Nenhum dado de atestado é enviado para a internet.
