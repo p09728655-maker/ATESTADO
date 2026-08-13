@@ -28,6 +28,18 @@ COMO BAIXAR / INSTALAR COMO APLICATIVO
     iPhone/iPad (Safari): Compartilhar > Adicionar à Tela de Início
     Computador (Chrome/Edge): ícone de instalar na barra de endereço
 
+REABRIR O MESMO ARQUIVO COM 1 CLIQUE
+  Depois da primeira importação, a tela inicial passa a mostrar o botão
+  "🔁 Reabrir <nome do arquivo>". Um clique e o painel carrega de novo,
+  sem precisar procurar a planilha.
+    Computador (Chrome/Edge): relê o arquivo ATUALIZADO direto do disco
+      (na primeira reabertura o navegador pede permissão uma única vez).
+    Celular / Safari / Firefox: abre a cópia da última importação,
+      guardada só no aparelho. Para dados novos, escolha o arquivo de novo.
+  O link "Esquecer arquivo salvo" apaga essa cópia do aparelho.
+
 IMPORTANTE
   A planilha continua sendo lida no próprio aparelho de quem abre.
   Nenhum dado de atestado é enviado para a internet.
+  O recurso de reabrir guarda uma cópia local apenas no navegador de quem
+  usa (IndexedDB) — use "Esquecer arquivo salvo" para removê-la.
