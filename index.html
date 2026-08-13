@@ -286,5 +286,39 @@ $("btnReabrir").addEventListener("click",function(){var btn=this;btn.disabled=!0
 $("btnEsquecer").addEventListener("click",function(){idbDel().then(atualizarBotao).catch(function(){})});
 atualizarBotao();
 })();</script>
+<div id="avisoAtualiza" role="alert">
+<span>✨ Nova versão do painel disponível.</span>
+<button class="btn-atu" id="btnAtualizarApp" type="button">Atualizar agora</button>
+<button class="btn-dep" id="btnAtualizarDepois" type="button" aria-label="Deixar para depois" title="Deixar para depois">✕</button>
+</div>
+<style>
+#avisoAtualiza{position:fixed;left:50%;bottom:18px;transform:translate(-50%,180%);z-index:400;display:flex;align-items:center;gap:12px;background:var(--surf2);border:1px solid var(--amber);border-radius:10px;padding:11px 10px 11px 18px;box-shadow:0 8px 30px rgba(0,0,0,.55);font-size:14px;max-width:min(92vw,480px);transition:transform .35s}
+#avisoAtualiza.mostra{transform:translate(-50%,0)}
+#avisoAtualiza .btn-atu{background:var(--amber);color:#141414;border:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+#avisoAtualiza .btn-dep{background:none;border:none;color:var(--ink3);font-size:15px;cursor:pointer;padding:4px 8px}
+#avisoAtualiza .btn-dep:hover{color:var(--ink)}
+@media print{#avisoAtualiza{display:none!important}}
+</style>
+<script>"use strict";
+(function(){
+/* Aviso de atualização do app (PWA).
+   O service worker novo instala sozinho em segundo plano quando uma nova
+   versão é publicada; este bloco detecta isso e mostra o aviso com o botão
+   "Atualizar agora", que recarrega a página já na versão nova. A checagem
+   acontece ao abrir, ao voltar para o app e a cada hora. */
+if(!("serviceWorker"in navigator)||0!==location.protocol.indexOf("http"))return;
+var aviso=$("avisoAtualiza"),tinhaControlador=!!navigator.serviceWorker.controller,recarregando=!1;
+function mostrar(){aviso.classList.add("mostra")}
+$("btnAtualizarApp").addEventListener("click",function(){recarregando||(recarregando=!0,location.reload())});
+$("btnAtualizarDepois").addEventListener("click",function(){aviso.classList.remove("mostra")});
+navigator.serviceWorker.addEventListener("controllerchange",function(){tinhaControlador?mostrar():tinhaControlador=!0});
+window.addEventListener("load",function(){navigator.serviceWorker.ready.then(function(reg){
+function checa(){reg.update().catch(function(){})}
+reg.waiting&&tinhaControlador&&mostrar();
+reg.addEventListener("updatefound",function(){var nv=reg.installing;nv&&nv.addEventListener("statechange",function(){"installed"===nv.state&&tinhaControlador&&mostrar()})});
+setInterval(checa,36e5);
+document.addEventListener("visibilitychange",function(){"visible"===document.visibilityState&&checa()});
+}).catch(function(){})});
+})();</script>
 </body>
 </html>
