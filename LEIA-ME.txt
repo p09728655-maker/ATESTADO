@@ -1,5 +1,8 @@
 APP ATESTADOS — PACOTE DE PUBLICAÇÃO (PWA)
 Patrimar Móveis · Departamento Pessoal
+USO INTERNO E CONFIDENCIAL — contém dados pessoais sensíveis (LGPD).
+Não compartilhar o link, o app ou os relatórios fora do DP e da gestão
+autorizada.
 
 ARQUIVOS
   index.html     aplicativo completo (mesmo dashboard, já otimizado)
