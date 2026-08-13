@@ -38,6 +38,14 @@ REABRIR O MESMO ARQUIVO COM 1 CLIQUE
       guardada só no aparelho. Para dados novos, escolha o arquivo de novo.
   O link "Esquecer arquivo salvo" apaga essa cópia do aparelho.
 
+AVISO DE ATUALIZAÇÃO
+  Quando uma nova versão do painel é publicada, o app baixa a atualização
+  sozinho em segundo plano e mostra o aviso "✨ Nova versão do painel
+  disponível" com o botão "Atualizar agora". Um clique e o app recarrega
+  já atualizado. Quem tocar em ✕ continua na versão atual e recebe o
+  aviso de novo na próxima abertura. A checagem acontece ao abrir o app,
+  ao voltar para ele e a cada hora.
+
 IMPORTANTE
   A planilha continua sendo lida no próprio aparelho de quem abre.
   Nenhum dado de atestado é enviado para a internet.
