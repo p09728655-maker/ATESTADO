@@ -5,20 +5,28 @@ ARQUIVOS
   index.html     aplicativo completo (mesmo dashboard, já otimizado)
   manifest.json  identidade do app (nome, ícone, cor)
   sw.js          funcionamento offline
-  icon-192.jpg   ícone do app
+  icon-192.png   ícone do app (instalação)
+  icon-512.png   ícone do app em alta resolução
+  icon-192.jpg   ícone antigo (compatibilidade)
   logo.jpg       logo usado na tela e no relatório
 
 COMO PUBLICAR (conta p09728655-maker, mesmo padrão dos outros painéis)
   1. Crie um repositório novo no GitHub, ex.: ATESTADOS-DP
-  2. Envie estes 5 arquivos na raiz do repositório (Add file > Upload files)
+  2. Envie estes arquivos na raiz do repositório (Add file > Upload files)
   3. No Vercel: Add New > Project > importe o repositório > Deploy
   4. Framework Preset: Other. Não precisa de build command.
 
-COMO INSTALAR COMO APLICATIVO
-  Abra a URL no Chrome ou Edge. Aparece um ícone de instalar na barra de
-  endereço (ou menu ... > Instalar). O app ganha ícone próprio, abre em
-  janela sem barra de navegador e funciona offline depois da primeira vez.
-  No celular: menu do navegador > Adicionar à tela inicial.
+COMO BAIXAR / INSTALAR COMO APLICATIVO
+  Abra a URL publicada. Na tela inicial do painel aparece o botão
+  "📲 Baixar como aplicativo" (também disponível na barra superior,
+  como "Instalar app"). Toque nele e confirme a instalação.
+  O app ganha ícone próprio, abre em janela sem barra de navegador
+  e funciona offline depois da primeira vez.
+
+  Se o botão de instalação automática não aparecer:
+    Android (Chrome): menu ⋮ > Instalar aplicativo
+    iPhone/iPad (Safari): Compartilhar > Adicionar à Tela de Início
+    Computador (Chrome/Edge): ícone de instalar na barra de endereço
 
 IMPORTANTE
   A planilha continua sendo lida no próprio aparelho de quem abre.
