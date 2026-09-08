@@ -1288,13 +1288,13 @@ function grafPessoas(d){
   });
   var top=Object.keys(m).sort(function(a,b){return m[b].dias-m[a].dias;}).slice(0,10);
   faz('cPessoas',{type:'bar',
-    data:{labels:top.map(nome),
+    data:{labels:top.map(function(k,i){return (i+1)+'. '+nome(k);}),
       datasets:[{data:top.map(function(k){return m[k].dias;}),
         backgroundColor:top.map(function(k,i){return i===0?'#8B9CF4':'#565F94';}),
         borderWidth:0,borderRadius:4,maxBarThickness:22}]},
     options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
       plugins:{legend:{display:false},tooltip:Object.assign({},TT,{callbacks:{
-        title:function(i){return nome(top[i[0].dataIndex]);},
+        title:function(i){return (i[0].dataIndex+1)+'. '+nome(top[i[0].dataIndex]);},
         label:function(i){var k=top[i.dataIndex];return [num(m[k].dias)+' '+rotuloDias()+' · '+m[k].q+' atestado'+(m[k].q>1?'s':''), setorCurto(m[k].setor)];}}})},
       scales:{x:Object.assign(eixoX(),{beginAtZero:true}),y:eixoY()}}
   });
