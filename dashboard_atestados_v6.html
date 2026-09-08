@@ -375,14 +375,14 @@ tbody td.n{font-family:'IBM Plex Mono',monospace}
       <div class="g2">
         <div class="card">
           <div class="card-cab">
-            <span class="ponto" style="background:var(--green)"></span><span class="card-tit">Setores</span>
+            <span class="ponto" style="background:var(--green)"></span><span class="card-tit">Top 10 setores</span>
             <div class="mini" id="modoSetor">
               <button class="sel" data-m="dias">Dias parados</button>
               <button data-m="qtd">Atestados</button>
               <button data-m="pessoa">Dias por pessoa</button>
             </div>
           </div>
-          <div class="card-sub" id="subSetor">Top 10 setores por dias parados no período filtrado.</div>
+          <div class="card-sub" id="subSetor">Os 10 setores com mais dias parados no período filtrado.</div>
           <div class="graf h260"><canvas id="cSetor"></canvas></div>
           <div class="nota a" id="notaSetor" style="display:none"></div>
         </div>
@@ -399,15 +399,15 @@ tbody td.n{font-family:'IBM Plex Mono',monospace}
       <div class="secao-cab"><span class="secao-tit">Por quê</span><span class="secao-sub">o que consta no atestado</span></div>
       <div class="g11">
         <div class="card">
-          <div class="card-cab"><span class="ponto" style="background:var(--blue)"></span><span class="card-tit">CIDs mais frequentes</span></div>
-          <div class="card-sub">Top 10 códigos com maior número de atestados.</div>
+          <div class="card-cab"><span class="ponto" style="background:var(--blue)"></span><span class="card-tit">Top 10 CIDs mais frequentes</span></div>
+          <div class="card-sub">Os 10 códigos com maior número de atestados no período filtrado.</div>
           <div class="graf h260"><canvas id="cCid"></canvas></div>
           <div class="nota a" id="notaCid" style="display:none"></div>
           <div class="nota i" id="notaCid2" style="display:none"></div>
         </div>
         <div class="card">
-          <div class="card-cab"><span class="ponto" style="background:var(--violet)"></span><span class="card-tit">Pessoas com mais dias parados</span></div>
-          <div class="card-sub">Top 10 por dias. Passe o mouse para ver setor e nº de atestados.</div>
+          <div class="card-cab"><span class="ponto" style="background:var(--violet)"></span><span class="card-tit">Top 10 pessoas com mais dias parados</span></div>
+          <div class="card-sub">Toque ou passe o mouse na barra para ver o setor e o nº de atestados.</div>
           <div class="graf h260"><canvas id="cPessoas"></canvas></div>
         </div>
       </div>
@@ -1185,9 +1185,9 @@ function grafSetor(d){
     modoSetor='dias';
     document.querySelectorAll('#modoSetor button').forEach(function(x){x.classList.toggle('sel',x.dataset.m==='dias');});
   }else{
-    $('subSetor').textContent = modoSetor==='qtd'?'Top 10 setores por número de atestados.'
+    $('subSetor').textContent = modoSetor==='qtd'?'Os 10 setores com mais atestados no período filtrado.'
       : modoSetor==='pessoa'?'Dias parados divididos pelo número de pessoas ativas do setor — compara setor grande com setor pequeno.'
-      : 'Top 10 setores por '+rotuloDias()+' perdidos.';
+      : 'Os 10 setores com mais '+rotuloDias()+' perdidos no período filtrado.';
   }
   var top=chaves.sort(function(a,b){return valor(b)-valor(a);}).slice(0,10);
   var vals=top.map(valor);
@@ -1458,7 +1458,7 @@ function montarRelatorio(d){
   h+='</tbody></table></div>';
 
   // setores
-  h+='<div class="rel-sec"><h2>Setores</h2><table><thead><tr><th>Setor</th><th class="n">Atestados</th><th class="n">Dias parados</th><th class="n">% dos dias</th><th class="n">Pessoas</th>'+(QUADRO?'<th class="n">Ativos</th>':'')+'<th class="n">Média</th></tr></thead><tbody>';
+  h+='<div class="rel-sec"><h2>Setores (todos)</h2><table><thead><tr><th>Setor</th><th class="n">Atestados</th><th class="n">Dias parados</th><th class="n">% dos dias</th><th class="n">Pessoas</th>'+(QUADRO?'<th class="n">Ativos</th>':'')+'<th class="n">Média</th></tr></thead><tbody>';
   setK.forEach(function(k){
     var m=ps[k], ativos=null;
     if(QUADRO)Object.keys(QUADRO.porSetor).forEach(function(x){if(limpaTexto(x)===limpaTexto(k))ativos=QUADRO.porSetor[x];});
@@ -1468,14 +1468,14 @@ function montarRelatorio(d){
 
   // CID + pessoas lado a lado
   h+='<div class="rel-quebra"></div><div class="rel-2col">';
-  h+='<div class="rel-sec"><h2>CIDs mais frequentes</h2><table><thead><tr><th>CID</th><th>Descrição</th><th class="n">Qtd</th><th class="n">Dias</th></tr></thead><tbody>';
+  h+='<div class="rel-sec"><h2>Top 15 CIDs mais frequentes</h2><table><thead><tr><th>CID</th><th>Descrição</th><th class="n">Qtd</th><th class="n">Dias</th></tr></thead><tbody>';
   cidK.forEach(function(k){
     h+='<tr><td class="destaque">'+esc(k)+'</td><td>'+esc((pc[k].desc||'—').slice(0,52))+'</td><td class="n">'+pc[k].q+'</td><td class="n">'+num(pc[k].dias)+'</td></tr>';
   });
   if(semCid)h+='<tr><td>—</td><td><i>Sem CID informado</i></td><td class="n">'+num(semCid)+'</td><td class="n">'+num(somaDias(d.filter(function(r){return !r.cid;})))+'</td></tr>';
   h+='</tbody></table></div>';
 
-  h+='<div class="rel-sec"><h2>Pessoas com mais dias parados</h2><table><thead><tr><th>Funcionário</th><th>Setor</th><th class="n">Atest.</th><th class="n">Dias</th></tr></thead><tbody>';
+  h+='<div class="rel-sec"><h2>Top 15 pessoas com mais dias parados</h2><table><thead><tr><th>Funcionário</th><th>Setor</th><th class="n">Atest.</th><th class="n">Dias</th></tr></thead><tbody>';
   pesK.forEach(function(k){
     h+='<tr><td>'+esc(nome(k))+'</td><td>'+esc(setorCurto(pp[k].setor))+'</td><td class="n">'+pp[k].q+'</td><td class="n">'+num(pp[k].dias)+'</td></tr>';
   });
